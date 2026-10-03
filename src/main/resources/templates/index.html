@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Calendar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.9.0/dist/css/coreui.min.css" rel="stylesheet"
+    integrity="sha384-9DZ6o3pJWcTwBR8W196XizUEf2kNMD35tkeyWqOB0yzml+nZrEe/13PMCpAIrT4r" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.9.0/dist/js/coreui.bundle.min.js"
+    integrity="sha384-FTek6QoTuxz6Bb078pS0kYQ0qH2LZVB5LWwZl8944mluH+TCk0q3OP4PqA+dHJRl"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .wrapper {
+      width: 100%;
+      padding-inline: var(--cui-sidebar-occupy-start, 0) var(--cui-sidebar-occupy-end, 0);
+      will-change: auto;
+      transition: padding 0.15s;
+    }
+
+    .header>.container-fluid,
+    .sidebar-header {
+      min-height: calc(4rem + 1px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper d-flex flex-column min-vh-100">
+    <header class="header header-sticky p-0 mb-4">
+      <div class="container-fluid px-4"></div>
+    </header>
+    <div class="flex-grow-1">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Google Calendarにイベントを登録するやつ</h1>
+          </div>
+        </div>
+        <form th:action="@{/}" method="post" target="_blank" th:object="${calendarForm}">
+          <div class="row mb-3">
+            <div class="col-12">
+              <label for="title" class="form-label">タイトル</label>
+              <input type="text" class="form-control" th:field="*{title}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <label for="details" class="form-label">詳細</label>
+              <textarea rows="5" class="form-control" th:field="*{details}"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="startDateTime" class="form-label">開始日時</label>
+              <input type="datetime-local" class="form-control" th:field="*{startDateTime}" required>
+            </div>
+            <div class="col-6">
+              <label for="endDateTime" class="form-label">終了日時</label>
+              <input type="datetime-local" class="form-control" th:field="*{endDateTime}" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">カレンダーに登録する</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

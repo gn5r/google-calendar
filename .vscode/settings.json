@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "css.styleSheets": [
+    "https://cdn.jsdelivr.net/npm/@coreui/coreui@5.9.0/dist/css/coreui.min.css"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
